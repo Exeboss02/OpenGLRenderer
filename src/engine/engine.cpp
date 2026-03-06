@@ -28,6 +28,8 @@ void Engine::Run()
         return;
     }
 
+    this->renderer.Initialize();
+
     glClearColor(0.1f, 0.0f, 0.15f, 1.0f);
 
     //---------------------------------------------------------------

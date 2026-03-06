@@ -7,6 +7,7 @@ public:
     Renderer();
     ~Renderer();
 
+    void Initialize();
     void Draw();
 private:
 };

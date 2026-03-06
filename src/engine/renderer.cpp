@@ -7,7 +7,15 @@ Renderer::Renderer()
 Renderer::~Renderer()
 {
 }
-void Renderer::Draw()
+
+void Renderer::Initialize()
+{
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+    glFrontFace(GL_CW);
+}
+
+void Renderer::Draw() 
 {
     glClear(GL_COLOR_BUFFER_BIT);
 

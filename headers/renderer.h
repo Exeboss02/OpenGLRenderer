@@ -1,4 +1,5 @@
 #pragma once
+#include "../headers/buffer.h"
 
 class Renderer
 {

@@ -1,4 +1,4 @@
-#include "../headers/engine.h"
+#include "../headers/engine/engine.h"
 
 int main(int, char**)
 {
@@ -6,4 +6,6 @@ int main(int, char**)
 
     Engine engine;
     engine.Run();
+
+    return 0;
 }

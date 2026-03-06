@@ -1,8 +1,9 @@
-#include <iostream>
+#pragma once
 #include "../headers/glad.h"
 #include <GLFW/glfw3.h>
+#include <iostream>
 
-#include "../headers/renderer.h"
+#include "../headers/engine/renderer.h"
 
 class Engine
 {

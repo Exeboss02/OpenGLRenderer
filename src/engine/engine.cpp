@@ -1,4 +1,5 @@
-#include "../headers/engine.h"
+#include "../headers/engine/engine.h"
+#include "../headers/gameObjects/meshObject.h"
 
 Engine::Engine()
 {
@@ -31,14 +32,7 @@ void Engine::Run()
 
     //---------------------------------------------------------------
 
-    Vertex dot;
-    dot.position.x = 0;
-    dot.position.y = 0;
-    dot.position.z = 0;
-
-    Buffer vertexBuffer(BufferType::VERTEX_BUFFER);
-    vertexBuffer.LoadData(&dot, sizeof(Vertex));
-    vertexBuffer.Bind(GL_ARRAY_BUFFER);
+    MeshObject point;
 
     //---------------------------------------------------------------
 

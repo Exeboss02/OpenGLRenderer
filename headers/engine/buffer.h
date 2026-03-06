@@ -1,6 +1,5 @@
 #pragma once
-#include "../headers/glad.h"
-#include "../headers/vertex.h"
+#include "../headers/base/vertex.h"
 
 enum BufferType
 {

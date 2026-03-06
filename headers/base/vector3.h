@@ -5,6 +5,7 @@ struct Vector3
 {
 public:
     Vector3() = default;
+    Vector3(float x, float y, float z);
     ~Vector3() = default;
 
     float x = 0;
@@ -12,5 +13,4 @@ public:
     float z = 0;
 
 private:
-    /* data */
 };

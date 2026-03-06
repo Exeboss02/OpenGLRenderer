@@ -2,11 +2,7 @@
 
 Mesh::Mesh()
 {
-    this->dot.position.x = 0;
-    this->dot.position.y = 0;
-    this->dot.position.z = 0;
-
-    this->vertexBuffer.LoadData(&dot, sizeof(Vertex));
+    this->vertexBuffer.LoadData(&this->triangle.vertexData, sizeof(Vertex) * 3);
     this->vertexBuffer.Bind(GL_ARRAY_BUFFER);
 }
 

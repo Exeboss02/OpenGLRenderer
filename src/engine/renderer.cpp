@@ -15,7 +15,7 @@ void Renderer::Initialize()
     glFrontFace(GL_CW);
 }
 
-void Renderer::Draw() 
+void Renderer::Draw()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 

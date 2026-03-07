@@ -12,12 +12,16 @@ file(GLOB SOURCES "src/*.cpp")
 set(ALL_SOURCES ${BASE} ${ENGINE} ${GAMEOBJECTS} ${SOURCES})
 
 find_package(OpenGL REQUIRED)
+find_package(glfw3 REQUIRED)
 
 # Add the executable with ALL source files
 add_executable(OpenGLRenderer ${ALL_SOURCES})
 
-# Add the headers directory as an include directory
-target_include_directories(OpenGLRenderer PRIVATE ${CMAKE_SOURCE_DIR}/headers)
+# Add the headers directory and GLM include directory
+target_include_directories(OpenGLRenderer PRIVATE
+    ${CMAKE_SOURCE_DIR}/headers
+    /usr/include  # GLM is installed here on Ubuntu
+)
 
 # Link libraries
 target_link_libraries(OpenGLRenderer

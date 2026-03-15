@@ -1,22 +1,19 @@
 #pragma once
-
-enum ShaderType
-{
-    VERTEX_SHADER,
-    HULL_SHADER,
-    DOMAIN_SHADER,
-    GEOMETRY_SHADER,
-    PIXEL_SHADER,
-    COMPUTE_SHADER
-};
+#include "../headers/glad.h"
 
 class Shader
 {
 public:
     Shader();
+    Shader(GLenum type);
     ~Shader();
 
+    void SetHandle(GLuint shaderHandle);
+    GLuint GetHandle();
+    void SetType(GLenum type);
+
 private:
-    ShaderType type;
+    GLenum type;
+    GLuint handle = 0;
 };
 

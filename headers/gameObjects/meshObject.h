@@ -12,6 +12,6 @@ public:
     ~MeshObject();
 
 private:
-    std::shared_ptr<Mesh> mesh;
-    std::weak_ptr<Material> material;
+    Mesh* mesh;
+    Material* material;
 };

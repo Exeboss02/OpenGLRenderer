@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <iostream>
+#include <fstream>
 
 class Utility
 {
@@ -7,7 +9,7 @@ public:
     Utility();
     ~Utility();
 
-    void* ReadFile(std::string path, size_t& size);
+    static bool ReadFile(std::string path, std::string& fileData);
 
 private:
 };

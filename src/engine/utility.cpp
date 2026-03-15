@@ -8,7 +8,27 @@ Utility::~Utility()
 {
 }
 
-void *Utility::ReadFile(std::string path, size_t& size)
+bool Utility::ReadFile(std::string path, std::string& fileData)
 {
-    return nullptr;
+    std::ifstream file(path);
+    bool success = false;
+
+    if(file.is_open())
+    {
+        std::string currentLine;
+        while(getline(file, currentLine))
+        {
+            fileData.append(currentLine + "\n");
+        }
+
+        file.close();
+        success = true;
+    }
+
+    else
+    {
+        std::cout << "couldn't open " << path << " for reading!" << std::endl;
+    }
+
+    return success;
 }

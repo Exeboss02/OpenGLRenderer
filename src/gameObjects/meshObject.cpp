@@ -2,9 +2,10 @@
 
 MeshObject::MeshObject()
 {
-    this->mesh = std::make_shared<Mesh>();
+    this->mesh = new Mesh();
 }
 
 MeshObject::~MeshObject()
 {
+    if(this->mesh) delete this->mesh;
 }

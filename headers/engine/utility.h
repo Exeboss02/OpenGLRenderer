@@ -7,7 +7,7 @@ public:
     Utility();
     ~Utility();
 
-    void* ReadFile(std::string path);
+    void* ReadFile(std::string path, size_t& size);
 
 private:
 };

@@ -1,5 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 
 class Transform
 {
@@ -20,4 +22,6 @@ private:
     glm::vec3 scale = glm::vec3(1, 1, 1);
 
     glm::mat4 worldMatrix = {};
+
+    void UpdateWorldMatrix();
 };

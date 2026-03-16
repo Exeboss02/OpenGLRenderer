@@ -19,9 +19,13 @@ public:
     void SetID(size_t id); //this should only be used by GameObjectFactory!
     size_t GetID();
 
+    void SetActive(bool active);
+    bool IsActive();
+
     Tag tag = Tag::NO_TAG;
     std::string name;
 
 private:
     size_t id = -1;
+    bool isActive = true;
 };

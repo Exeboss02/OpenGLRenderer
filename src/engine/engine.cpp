@@ -29,23 +29,42 @@ void Engine::Run()
         return;
     }
 
-    this->renderer.Initialize();
+    Renderer& rendererInstance = Renderer::GetInstance();
+    rendererInstance.Initialize();
+
+    this->CreateDefaultAssets();
 
     glClearColor(0.1f, 0.0f, 0.15f, 1.0f);
 
     //---------------------------------------------------------------
 
+    Material* material = AssetManager::GetInstance().GetMaterial("defaultMaterial");
     MeshObject* triangle = GameObjectFactory::GetInstance().CreateGameObjectOfType<MeshObject>();
+    triangle->SetMaterial(material);
 
     //---------------------------------------------------------------
 
     while(!glfwWindowShouldClose(this->window))
     {
         glfwPollEvents();
-        this->renderer.Draw();
+        rendererInstance.Draw();
         glfwSwapBuffers(window);
     }
 
     glfwTerminate();
     return;
+}
+
+void Engine::CreateDefaultAssets()
+{
+    AssetManager& amInstance = AssetManager::GetInstance();
+
+    //Shaders
+    Shader* defaultVS = amInstance.GetShader("shaders/vsDefault.glsl", GL_VERTEX_SHADER);
+    Shader* defaultPS = amInstance.GetShader("shaders/psDefault.glsl", GL_FRAGMENT_SHADER);
+
+    //Materials
+    Material* defaultMaterial = amInstance.CreateMaterial("defaultMaterial");
+    defaultMaterial->SetVertexShader(defaultVS);
+    defaultMaterial->SetPixelShader(defaultPS);
 }

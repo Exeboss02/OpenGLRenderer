@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "../headers/engine/renderer.h"
+#include "../headers/engine/assetManager.h"
 
 class Engine
 {
@@ -12,8 +13,8 @@ public:
     ~Engine();
 
     void Run();
+    void CreateDefaultAssets();
 
 private:
     GLFWwindow* window;
-    Renderer renderer;
 };

@@ -180,6 +180,8 @@ Material* AssetManager::CreateMaterial(std::string id)
         Material* newMaterial = new Material();
         newMaterial->SetID(id);
 
+        this->materials.insert(std::make_pair(id, newMaterial));
+
         return newMaterial;
     }
     else

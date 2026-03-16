@@ -3,9 +3,13 @@
 Mesh::Mesh()
 {
     this->vertexBuffer.LoadData(&this->triangle.vertexData, sizeof(Vertex) * 3);
-    this->vertexBuffer.Bind(GL_ARRAY_BUFFER);
 }
 
 Mesh::~Mesh()
 {
+}
+
+void Mesh::BindVertexBuffer(size_t location)
+{
+    this->vertexBuffer.Bind(location);
 }

@@ -17,3 +17,13 @@ size_t GameObject::GetID()
 {
     return this->id;
 }
+
+void GameObject::SetActive(bool active)
+{
+    this->isActive = active;
+}
+
+bool GameObject::IsActive()
+{
+    return this->isActive;
+}

@@ -11,6 +11,11 @@ public:
     MeshObject();
     ~MeshObject();
 
+    void SetMesh(Mesh* mesh);
+    Mesh* GetMesh();
+    void SetMaterial(Material* material);
+    Material* GetMaterial();
+
 private:
     Mesh* mesh;
     Material* material;

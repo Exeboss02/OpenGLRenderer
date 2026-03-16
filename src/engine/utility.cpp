@@ -32,3 +32,8 @@ bool Utility::ReadFile(std::string path, std::string& fileData)
 
     return success;
 }
+
+std::string Utility::GetWorkingDirectory()
+{
+    return std::filesystem::current_path();
+}

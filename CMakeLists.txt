@@ -23,6 +23,8 @@ target_include_directories(OpenGLRenderer PRIVATE
     /usr/include  # GLM is installed here on Ubuntu
 )
 
+target_compile_options(OpenGLRenderer PRIVATE -g) #debug
+
 # Link libraries
 target_link_libraries(OpenGLRenderer
     glfw

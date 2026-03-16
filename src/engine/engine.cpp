@@ -59,9 +59,11 @@ void Engine::CreateDefaultAssets()
 {
     AssetManager& amInstance = AssetManager::GetInstance();
 
+    std::cout << "CURRENT WORKING DIRECTORY: " << Utility::GetWorkingDirectory() << std::endl;
+
     //Shaders
-    Shader* defaultVS = amInstance.GetShader("shaders/vsDefault.glsl", GL_VERTEX_SHADER);
-    Shader* defaultPS = amInstance.GetShader("shaders/psDefault.glsl", GL_FRAGMENT_SHADER);
+    Shader* defaultVS = amInstance.GetShader("src/shaders/vs/vsDefault.glsl", GL_VERTEX_SHADER);
+    Shader* defaultPS = amInstance.GetShader("src/shaders/ps/psDefault.glsl", GL_FRAGMENT_SHADER);
 
     //Materials
     Material* defaultMaterial = amInstance.CreateMaterial("defaultMaterial");

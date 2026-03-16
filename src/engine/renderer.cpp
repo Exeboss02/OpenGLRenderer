@@ -38,7 +38,7 @@ void Renderer::Draw()
 
         //Material
         Material* material = this->meshObjects[i]->GetMaterial();
-        //material->BindShaderProgram();
+        material->BindShaderProgram();
 
         //Buffers
         Mesh* currentMesh = this->meshObjects[i]->GetMesh();

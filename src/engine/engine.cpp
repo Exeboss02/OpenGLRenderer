@@ -1,5 +1,6 @@
 #include "../headers/engine/engine.h"
 #include "../headers/gameObjects/meshObject.h"
+#include "../headers/gameObjects/gameObjectFactory.h"
 
 Engine::Engine()
 {
@@ -34,7 +35,7 @@ void Engine::Run()
 
     //---------------------------------------------------------------
 
-    MeshObject triangle;
+    MeshObject* triangle = GameObjectFactory::GetInstance().CreateGameObjectOfType<MeshObject>();
 
     //---------------------------------------------------------------
 

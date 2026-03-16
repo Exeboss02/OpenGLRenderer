@@ -154,3 +154,37 @@ Mesh *AssetManager::GetMesh(std::string path)
 {
     return nullptr;
 }
+
+Material* AssetManager::GetMaterial(std::string id)
+{
+    auto material = this->materials.find(id);
+
+    if(material == this->materials.end())
+    {
+        std::cout << "Material " << id << " don't exist" << std::endl;
+    }
+    else
+    {
+        return material->second;
+    }
+
+    return nullptr;
+}
+
+Material* AssetManager::CreateMaterial(std::string id)
+{
+    auto material = this->materials.find(id);
+
+    if(material == this->materials.end())
+    {
+        Material* newMaterial = new Material();
+        newMaterial->SetID(id);
+
+        return newMaterial;
+    }
+    else
+    {
+        std::cout << "Material " << id << " already exists, you get its pointer instead" << std::endl;
+        return material->second;
+    }
+}

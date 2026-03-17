@@ -21,11 +21,31 @@ std::string Material::GetID()
 void Material::SetVertexShader(Shader *vertexShader)
 {
     this->shaderProgram.SetVertexShader(vertexShader);
+
+    GLuint shaderProgramHandle = this->shaderProgram.GetHandle();
+    if(shaderProgramHandle != 0)
+    {
+        glLinkProgram(this->shaderProgram.GetHandle());
+    }
+    else
+    {
+        std::cout << "couldn't link shader program for " << this->id << std::endl;
+    }
 }
 
 void Material::SetPixelShader(Shader* pixelShader)
 {
     this->shaderProgram.SetPixelShader(pixelShader);
+
+    GLuint shaderProgramHandle = this->shaderProgram.GetHandle();
+    if(shaderProgramHandle != 0)
+    {
+        glLinkProgram(this->shaderProgram.GetHandle());
+    }
+    else
+    {
+        std::cout << "couldn't link shader program for " << this->id << std::endl;
+    }
 }
 
 void Material::BindShaderProgram()
@@ -34,7 +54,7 @@ void Material::BindShaderProgram()
     
     if(shaderProgramHandle != 0)
     {
-        glLinkProgram(shaderProgramHandle);
+        glUseProgram(shaderProgramHandle);
     }
     else
     {

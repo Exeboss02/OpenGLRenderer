@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Create build directory and navigate into it
 mkdir -p build
 cd build

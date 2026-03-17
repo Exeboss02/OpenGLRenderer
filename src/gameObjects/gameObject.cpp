@@ -27,3 +27,11 @@ bool GameObject::IsActive()
 {
     return this->isActive;
 }
+
+void GameObject::Start()
+{
+}
+
+void GameObject::Tick()
+{
+}

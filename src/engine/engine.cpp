@@ -12,22 +12,7 @@ Engine::~Engine()
 
 void Engine::Run()
 {
-    this->window = nullptr;
-
-    if(!glfwInit())
-    {
-        return;
-    }
-
-    this->window = glfwCreateWindow(1000, 600, "OpenGLRenderer", nullptr, nullptr);
-    glfwMakeContextCurrent(this->window);
-
-    if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "couldn't load OpenGL" << std::endl;
-        glfwTerminate();
-        return;
-    }
+    this->window.Initialize(1000, 600, "OpenGLRenderer");
 
     Renderer& rendererInstance = Renderer::GetInstance();
     rendererInstance.Initialize();
@@ -44,14 +29,14 @@ void Engine::Run()
 
     //---------------------------------------------------------------
 
-    while(!glfwWindowShouldClose(this->window))
+    while(!this->window.ShouldClose())
     {
-        glfwPollEvents();
+        this->window.PollEvents();
         rendererInstance.Draw();
-        glfwSwapBuffers(window);
+        this->window.SwapBuffers();
     }
 
-    glfwTerminate();
+    this->window.Close();
     return;
 }
 

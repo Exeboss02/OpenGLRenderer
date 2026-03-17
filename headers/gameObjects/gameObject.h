@@ -22,6 +22,9 @@ public:
     void SetActive(bool active);
     bool IsActive();
 
+    virtual void Start();
+    virtual void Tick();
+
     Tag tag = Tag::NO_TAG;
     std::string name;
 

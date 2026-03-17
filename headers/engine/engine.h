@@ -1,8 +1,7 @@
 #pragma once
-#include "../headers/glad.h"
-#include <GLFW/glfw3.h>
 #include <iostream>
 
+#include "../headers/base/window.h"
 #include "../headers/engine/renderer.h"
 #include "../headers/engine/assetManager.h"
 
@@ -16,5 +15,5 @@ public:
     void CreateDefaultAssets();
 
 private:
-    GLFWwindow* window;
+    Window window;
 };

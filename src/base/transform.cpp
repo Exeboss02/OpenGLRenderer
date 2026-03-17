@@ -2,6 +2,7 @@
 
 Transform::Transform()
 {
+    this->UpdateWorldMatrix(); //to make sure it applies the default values to the matrix
 }
 
 Transform::~Transform()
@@ -39,6 +40,21 @@ void Transform::SetScale(glm::vec3 scale)
 glm::vec3 Transform::GetScale()
 {
     return this->scale;
+}
+
+glm::vec3 Transform::GetForward()
+{
+    return glm::normalize(glm::vec3(this->worldMatrix[2]));
+}
+
+glm::vec3 Transform::GetUp()
+{
+    return glm::normalize(glm::vec3(this->worldMatrix[1]));
+}
+
+glm::vec3 Transform::GetRight()
+{
+    return glm::normalize(glm::vec3(this->worldMatrix[0]));
 }
 
 void Transform::UpdateWorldMatrix()

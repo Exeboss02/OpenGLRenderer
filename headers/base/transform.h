@@ -16,6 +16,10 @@ public:
     void SetScale(glm::vec3 position);
     glm::vec3 GetScale();
 
+    glm::vec3 GetForward();
+    glm::vec3 GetUp();
+    glm::vec3 GetRight();
+
 private:
     glm::vec3 position = {};
     glm::vec3 rotation = {};

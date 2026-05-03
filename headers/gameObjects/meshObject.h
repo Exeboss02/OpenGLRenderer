@@ -29,4 +29,5 @@ private:
     Mesh* mesh;
     Material* material;
     Buffer matrixBuffer;
+    WorldMatrixBufferData worldMatrixBufferData;
 };

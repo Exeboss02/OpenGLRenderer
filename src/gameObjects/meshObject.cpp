@@ -18,10 +18,9 @@ MeshObject::~MeshObject()
 
 void MeshObject::Update()
 {
-    WorldMatrixBufferData data;
-    data.worldMatrix = this->transform.GetWorldMatrix();
+    this->worldMatrixBufferData.worldMatrix = this->transform.GetWorldMatrix();
 
-    this->matrixBuffer.LoadData(&data, sizeof(WorldMatrixBufferData));
+    this->matrixBuffer.LoadData(&this->worldMatrixBufferData, sizeof(WorldMatrixBufferData));
 }
 
 void MeshObject::SetMesh(Mesh *mesh)

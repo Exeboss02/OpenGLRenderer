@@ -40,4 +40,5 @@ private:
     glm::mat4 viewMatrix = {};
     glm::mat4 projectionMatrix = {};
     Buffer matrixBuffer;
+    MatrixBufferData matrixBufferData;
 };

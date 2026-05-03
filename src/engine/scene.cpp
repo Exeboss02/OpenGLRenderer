@@ -47,12 +47,12 @@ void Scene::Start()
 
 void Scene::Update()
 {
-    this->activeCamera->BindMatrixBuffer();
-
     for (int i = 0; i < this->gameObjects.size(); i++)
     {
         this->gameObjects[i]->Update();
     }
+
+    this->activeCamera->BindMatrixBuffer();
 }
 
 void Scene::SetActiveCamera(CameraObject *camera)

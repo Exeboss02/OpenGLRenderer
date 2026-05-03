@@ -31,13 +31,12 @@ void CameraObject::Update()
         this->projectionMatrix = glm::perspective(glm::radians(this->fov), this->aspectRatio, this->nearPlane, this->farPlane); //lookAtLH is a thing?
     }
 
-    MatrixBufferData data;
-    data.viewMatrix = this->viewMatrix;
-    data.projectionMatrix = this->projectionMatrix;
-    data.position = this->transform.GetPosition();
-    data.fov = this->fov;
+    this->matrixBufferData.viewMatrix = this->viewMatrix;
+    this->matrixBufferData.projectionMatrix = this->projectionMatrix;
+    this->matrixBufferData.position = this->transform.GetPosition();
+    this->matrixBufferData.fov = this->fov;
 
-    this->matrixBuffer.LoadData(&data, sizeof(MatrixBufferData));
+    this->matrixBuffer.LoadData(&this->matrixBufferData, sizeof(MatrixBufferData));
 }
 
 glm::mat4 CameraObject::GetViewMatrix()

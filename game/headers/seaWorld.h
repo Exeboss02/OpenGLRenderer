@@ -5,7 +5,6 @@ class SeaWorld : public Scene
 {
 public:
     void Start() override;
-    void Update() override;
 
 private:
 };

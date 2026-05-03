@@ -4,6 +4,7 @@
 CameraObject::CameraObject()
 {
     this->aspectRatio = EngineInfo::GetInstance().GetAspectRatio();
+    this->matrixBuffer.Initialize(BufferType::UNIFORM_BUFFER);
 }
 
 CameraObject::~CameraObject()
@@ -14,7 +15,7 @@ void CameraObject::Start()
 {
 }
 
-void CameraObject::Tick()
+void CameraObject::Update()
 {
     glm::vec3 eyePosition = this->transform.GetPosition();
     glm::vec3 forward = this->transform.GetForward(); //or from eyePosition?
@@ -29,6 +30,14 @@ void CameraObject::Tick()
     {
         this->projectionMatrix = glm::perspective(glm::radians(this->fov), this->aspectRatio, this->nearPlane, this->farPlane); //lookAtLH is a thing?
     }
+
+    MatrixBufferData data;
+    data.viewMatrix = this->viewMatrix;
+    data.projectionMatrix = this->projectionMatrix;
+    data.position = this->transform.GetPosition();
+    data.fov = this->fov;
+
+    this->matrixBuffer.LoadData(&data, sizeof(MatrixBufferData));
 }
 
 glm::mat4 CameraObject::GetViewMatrix()
@@ -44,4 +53,10 @@ glm::mat4 CameraObject::GetProjectionMatrix()
 glm::mat4 CameraObject::GetViewProjectionMatrix()
 {
     return this->viewMatrix * this->projectionMatrix;
+}
+
+void CameraObject::BindMatrixBuffer()
+{
+    //slot 1 should only be used for the camera matrix buffer
+    this->matrixBuffer.Bind(1);
 }

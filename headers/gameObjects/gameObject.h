@@ -27,7 +27,7 @@ public:
     void SetActiveScene(Scene* scene);
 
     virtual void Start();
-    virtual void Tick();
+    virtual void Update();
 
     Tag tag = Tag::NO_TAG;
     std::string name;

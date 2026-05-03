@@ -57,6 +57,11 @@ glm::vec3 Transform::GetRight()
     return glm::normalize(glm::vec3(this->worldMatrix[0]));
 }
 
+glm::mat4 Transform::GetWorldMatrix()
+{
+    return this->worldMatrix;
+}
+
 void Transform::UpdateWorldMatrix()
 {
     this->worldMatrix = glm::mat4(1.0f);

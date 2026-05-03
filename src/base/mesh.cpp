@@ -9,7 +9,7 @@ Mesh::~Mesh()
 {
 }
 
-void Mesh::BindVertexBuffer(size_t location)
+void Mesh::BindVertexBuffer()
 {
-    this->vertexBuffer.Bind(location);
+    this->vertexBuffer.Bind(0); //slot doesn't matter for vertex buffer
 }

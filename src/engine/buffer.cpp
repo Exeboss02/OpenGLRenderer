@@ -7,37 +7,49 @@ Buffer::Buffer()
 
 Buffer::Buffer(BufferType type)
 {
-    this->type = type;
     glGenBuffers(1, &this->bufferHandle);
-
-    switch (type)
-    {
-    case BufferType::VERTEX_BUFFER:
-        this->usage = GL_STATIC_DRAW;
-        break;
-    
-    default:
-        break;
-    }
+    this->Initialize(type);
 }
 
 Buffer::~Buffer()
 {
 }
 
-void Buffer::SetType(BufferType type)
+void Buffer::Initialize(BufferType type)
 {
     this->type = type;
+
+    switch (type)
+    {
+    case BufferType::VERTEX_BUFFER:
+        this->usage = GL_STATIC_DRAW;
+        this->binding = GL_ARRAY_BUFFER;
+        break;
+
+    case BufferType::UNIFORM_BUFFER:
+        this->usage = GL_STATIC_DRAW;
+        this->binding = GL_UNIFORM_BUFFER;
+    
+    default:
+        break;
+    }
 }
 
 void Buffer::LoadData(void *data, size_t size)
 {
-    glBindBuffer(GL_ARRAY_BUFFER, this->bufferHandle);
-    glBufferData(GL_ARRAY_BUFFER, size, data, this->usage);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(this->binding, this->bufferHandle);
+    glBufferData(this->binding, size, data, this->usage);
+    glBindBuffer(this->binding, 0);
 }
 
-void Buffer::Bind(size_t location)
+void Buffer::Bind(size_t slot)
 {
-    glBindBuffer(location, this->bufferHandle);
+    if(this->binding == GL_UNIFORM_BUFFER)
+    {
+        glBindBufferBase(this->binding, slot, this->bufferHandle);
+    }
+    else
+    {
+        glBindBuffer(this->binding, this->bufferHandle);
+    }
 }

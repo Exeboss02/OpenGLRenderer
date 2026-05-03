@@ -19,6 +19,7 @@ public:
     glm::vec3 GetForward();
     glm::vec3 GetUp();
     glm::vec3 GetRight();
+    glm::mat4 GetWorldMatrix();
 
 private:
     glm::vec3 position = {};

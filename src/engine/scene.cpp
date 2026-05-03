@@ -39,8 +39,23 @@ bool Scene::DestroyGameObject(GameObject *gameObject)
 
 void Scene::Start()
 {
+    for (int i = 0; i < this->gameObjects.size(); i++)
+    {
+        this->gameObjects[i]->Start();
+    }
 }
 
 void Scene::Update()
 {
+    this->activeCamera->BindMatrixBuffer();
+
+    for (int i = 0; i < this->gameObjects.size(); i++)
+    {
+        this->gameObjects[i]->Update();
+    }
+}
+
+void Scene::SetActiveCamera(CameraObject *camera)
+{
+    this->activeCamera = camera;
 }

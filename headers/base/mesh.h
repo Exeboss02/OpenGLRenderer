@@ -10,8 +10,8 @@ public:
 
     Triangle triangle;
 
-    void BindVertexBuffer(size_t location);
-    void BindIndexBuffer(size_t location);
+    void BindVertexBuffer();
+    void BindIndexBuffer();
 
 private:
     Buffer vertexBuffer = Buffer(BufferType::VERTEX_BUFFER);

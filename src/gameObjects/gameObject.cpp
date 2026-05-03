@@ -37,6 +37,6 @@ void GameObject::Start()
 {
 }
 
-void GameObject::Tick()
+void GameObject::Update()
 {
 }

@@ -36,13 +36,15 @@ void Renderer::Draw()
         
         if(!this->meshObjects[i]->IsActive()) continue;
 
+        //Buffers
+        this->meshObjects[i]->BindMatrixBuffer();
+
+        Mesh* currentMesh = this->meshObjects[i]->GetMesh();
+        currentMesh->BindVertexBuffer();
+
         //Material
         Material* material = this->meshObjects[i]->GetMaterial();
         material->BindShaderProgram();
-
-        //Buffers
-        Mesh* currentMesh = this->meshObjects[i]->GetMesh();
-        currentMesh->BindVertexBuffer(GL_ARRAY_BUFFER);
 
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
         glDrawArrays(GL_TRIANGLES, 0, 3);

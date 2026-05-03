@@ -1,9 +1,12 @@
 #pragma once
 #include <string>
 
+class SceneManager; //forward declaration
+class Scene;
+
 enum Tag
 {
-    NO_TAG          = 0,      // 0
+    NO_TAG        = 0,      // 0
     PLAYER        = 1 << 0, // 1
     FRIEND        = 1 << 1, // 2
     ENEMY         = 1 << 2, // 4
@@ -21,6 +24,7 @@ public:
 
     void SetActive(bool active);
     bool IsActive();
+    void SetActiveScene(Scene* scene);
 
     virtual void Start();
     virtual void Tick();
@@ -29,6 +33,7 @@ public:
     std::string name;
 
 private:
+    Scene* activeScene = nullptr;
     size_t id = -1;
     bool isActive = true;
 };

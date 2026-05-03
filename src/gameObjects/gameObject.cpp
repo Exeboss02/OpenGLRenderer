@@ -28,6 +28,11 @@ bool GameObject::IsActive()
     return this->isActive;
 }
 
+void GameObject::SetActiveScene(Scene *scene)
+{
+    this->activeScene = scene;
+}
+
 void GameObject::Start()
 {
 }

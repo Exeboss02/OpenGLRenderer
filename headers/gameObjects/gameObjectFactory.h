@@ -3,25 +3,20 @@
 
 #include "../headers/gameObjects/gameObject.h"
 
+//Should factory have like a memory manager, and with that handle both allocation
+//and deallocation even though hfactories typically only creates stuff?
 class GameObjectFactory
 {
 public:
-	GameObjectFactory(GameObjectFactory& other) = delete;
-	GameObjectFactory& operator=(const GameObjectFactory&) = delete;
-
-    static GameObjectFactory& GetInstance();
+	GameObjectFactory(Scene* ownerScene);
+    ~GameObjectFactory();
 
     template <typename T>
 	T* CreateGameObjectOfType();
 
-    bool DestroyGameObject(GameObject* gameObject);
-
 private:
-    GameObjectFactory();
-    ~GameObjectFactory();
-
     int gameObjectIDcounter = 0;
-    std::vector<GameObject*> gameObjects;
+    Scene* ownerScene = nullptr;
 };
 
 
@@ -33,10 +28,8 @@ inline T *GameObjectFactory::CreateGameObjectOfType()
     
     T* gameObject = new T();
     gameObject->SetID(this->gameObjectIDcounter);
+    gameObject->SetActiveScene(this->ownerScene);
+
     this->gameObjectIDcounter++;
-
-    GameObject* pushObject = static_cast<GameObject*>(gameObject);
-    this->gameObjects.push_back(pushObject);
-
     return gameObject;
 }

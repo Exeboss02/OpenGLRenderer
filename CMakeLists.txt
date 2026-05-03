@@ -8,8 +8,11 @@ file(GLOB ENGINE "src/engine/*.cpp")
 file(GLOB GAMEOBJECTS "src/gameObjects/*.cpp")
 file(GLOB SOURCES "src/*.cpp")
 
+#game folder sources
+file(GLOB GAME "game/src/*.cpp")
+
 # Combine all sources into one list
-set(ALL_SOURCES ${BASE} ${ENGINE} ${GAMEOBJECTS} ${SOURCES})
+set(ALL_SOURCES ${BASE} ${ENGINE} ${GAMEOBJECTS} ${SOURCES} ${GAME})
 
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
@@ -20,6 +23,7 @@ add_executable(OpenGLRenderer ${ALL_SOURCES})
 # Add the headers directory and GLM include directory
 target_include_directories(OpenGLRenderer PRIVATE
     ${CMAKE_SOURCE_DIR}/headers
+    ${CMAKE_SOURCE_DIR}/game/headers
     /usr/include  # GLM is installed here on Ubuntu
 )
 

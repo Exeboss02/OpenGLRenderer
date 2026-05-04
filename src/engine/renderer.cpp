@@ -50,6 +50,7 @@ void Renderer::Draw()
         glDrawArrays(GL_TRIANGLES, 0, 3);
     }
 
+    //Unbind uniform buffers?
     glDisableVertexAttribArray(0);
 }
 

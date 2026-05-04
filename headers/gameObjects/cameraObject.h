@@ -1,13 +1,15 @@
 #pragma once
 #include "../headers/gameObjects/gameObject3D.h"
 #include "../headers/engine/buffer.h"
+#include "../headers/engine/utility.h"
 
 struct MatrixBufferData
 {
     glm::mat4 viewMatrix = {};
     glm::mat4 projectionMatrix = {};
-    glm::vec3 position = glm::vec3(0, 0, 0);
+    glm::vec4 position = glm::vec4(0, 0, 0, 0);
     float fov = 1.57; //radians
+    glm::vec3 padding = {};
 };
 
 class CameraObject : public GameObject3D

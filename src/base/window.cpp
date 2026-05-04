@@ -19,7 +19,7 @@ bool Window::Initialize(int width, int height, std::string title)
     EngineInfo& engineInfo = EngineInfo::GetInstance();
     engineInfo.SetScreenWidth(this->width);
     engineInfo.SetScreenHeight(this->height);
-    engineInfo.SetAspectRatio(this->width / this->height);
+    engineInfo.SetAspectRatio(float(this->width) / float(this->height));
 
     if(!glfwInit())
     {

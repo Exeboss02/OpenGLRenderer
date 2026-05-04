@@ -4,6 +4,8 @@
 #include <fstream>
 #include <filesystem>
 
+#include <glm/glm.hpp>
+
 class Utility
 {
 public:
@@ -12,6 +14,7 @@ public:
 
     static bool ReadFile(std::string path, std::string& fileData);
     static std::string GetWorkingDirectory();
+    static void PrintMatrix(glm::mat4 matrix, std::string title);
 
 private:
 };

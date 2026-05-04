@@ -37,3 +37,20 @@ std::string Utility::GetWorkingDirectory()
 {
     return std::filesystem::current_path();
 }
+
+void Utility::PrintMatrix(glm::mat4 matrix, std::string title)
+{
+    std::cout << "______" << title << "______" << std::endl;
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            std::cout << matrix[j][i] << ", ";
+        }
+
+        std::cout << std::endl;
+    }
+    
+    std::cout << "______END______" << std::endl;
+}

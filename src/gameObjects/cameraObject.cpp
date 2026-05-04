@@ -18,9 +18,9 @@ void CameraObject::Start()
 void CameraObject::Update()
 {
     glm::vec3 eyePosition = this->transform.GetPosition();
-    glm::vec3 forward = this->transform.GetForward(); //or from eyePosition?
+    glm::vec3 lookPosition = eyePosition + this->transform.GetForward();
     glm::vec3 up = this->transform.GetUp(); //or just forward?
-    this->viewMatrix = glm::lookAt(eyePosition, forward, up); //lookAtLH is a thing?
+    this->viewMatrix = glm::lookAt(eyePosition, lookPosition, up); //lookAtLH is a thing?
 
     if(this->orthographic)
     {
@@ -33,8 +33,11 @@ void CameraObject::Update()
 
     this->matrixBufferData.viewMatrix = this->viewMatrix;
     this->matrixBufferData.projectionMatrix = this->projectionMatrix;
-    this->matrixBufferData.position = this->transform.GetPosition();
-    this->matrixBufferData.fov = this->fov;
+    this->matrixBufferData.position = glm::vec4(this->transform.GetPosition(), 1);
+    this->matrixBufferData.fov = glm::radians(this->fov);
+
+    // Utility::PrintMatrix(this->viewMatrix, "VIEWMATRIX");
+    // Utility::PrintMatrix(this->projectionMatrix, "PROJECTIONMATRIX");
 
     this->matrixBuffer.LoadData(&this->matrixBufferData, sizeof(MatrixBufferData));
 }

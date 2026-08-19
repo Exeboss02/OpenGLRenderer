@@ -9,7 +9,7 @@ struct MatrixBufferData
     glm::mat4 projectionMatrix = {};
     glm::vec4 position = glm::vec4(0, 0, 0, 0);
     float fov = 1.57; //radians
-    glm::vec3 padding = {};
+    float padding[3] = {};
 };
 
 class CameraObject : public GameObject3D

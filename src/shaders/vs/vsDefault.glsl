@@ -27,6 +27,6 @@ layout(std140, binding = 1) uniform CameraBuffer
 
 void main()
 {
-    mat4 vpMatrix = camera.viewMatrix * camera.projectionMatrix;
+    mat4 vpMatrix = camera.projectionMatrix * camera.viewMatrix;
     gl_Position = vpMatrix * matrixBuffer.worldMatrix * vec4(vPosition, 1);
 }

@@ -66,14 +66,16 @@ void Transform::UpdateWorldMatrix()
 {
     this->worldMatrix = glm::mat4(1.0f);
 
-    //Scale
-    this->worldMatrix = glm::scale(this->worldMatrix, this->scale);
+    //it should for some reason be translation * rotation * scale in this case to get it correct
+
+    //Translation
+    this->worldMatrix = glm::translate(this->worldMatrix, this->position);
 
     //Rotation
     this->worldMatrix = glm::rotate(this->worldMatrix, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
     this->worldMatrix = glm::rotate(this->worldMatrix, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
     this->worldMatrix = glm::rotate(this->worldMatrix, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
 
-    //Translation
-    this->worldMatrix = glm::translate(this->worldMatrix, this->position);
+    //Scale
+    this->worldMatrix = glm::scale(this->worldMatrix, this->scale);
 }

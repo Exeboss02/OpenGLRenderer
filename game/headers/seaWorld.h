@@ -1,5 +1,6 @@
 #pragma once
 #include "../headers/engine/engineInclude.h"
+#include "../game/headers/demoTriangle.h"
 
 class SeaWorld : public Scene
 {
@@ -7,10 +8,9 @@ public:
     void Start() override;
     void Update() override;
 
-    MeshObject* triangle = nullptr;
-    Buffer colorBuffer;
-    glm::vec4 colorData = {1, 0.4, 0, 1};
-    glm::vec3 signs = {1, 1, 1};
+    DemoTriangle* triangle1 = nullptr;
+    DemoTriangle* triangle2 = nullptr;
+    DemoTriangle* triangle3 = nullptr;
 
 private:
 };

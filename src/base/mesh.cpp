@@ -2,7 +2,8 @@
 
 Mesh::Mesh()
 {
-    this->vertexBuffer.LoadData(&this->triangle.vertexData, sizeof(Vertex) * 3);
+    //this is temporary for the pyramid
+    this->vertexBuffer.LoadData(&this->pyramid.vertexData, sizeof(Vertex) * 12);
 }
 
 Mesh::~Mesh()

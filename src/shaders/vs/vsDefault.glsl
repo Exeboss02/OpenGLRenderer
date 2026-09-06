@@ -13,7 +13,11 @@ struct CameraBufferData
     float fov;
 };
 
+out vec4 worldPosition;
+out vec4 normal;
+
 layout(location = 0) in vec3 vPosition;
+layout(location = 1) in vec3 vNormal;
 
 layout(std140, binding = 0) uniform WorldMatrixBuffer
 {
@@ -28,5 +32,8 @@ layout(std140, binding = 1) uniform CameraBuffer
 void main()
 {
     mat4 vpMatrix = camera.projectionMatrix * camera.viewMatrix;
-    gl_Position = vpMatrix * matrixBuffer.worldMatrix * vec4(vPosition, 1);
+    worldPosition = matrixBuffer.worldMatrix * vec4(vPosition, 1);
+    normal = matrixBuffer.worldMatrix * vec4(vNormal, 1);
+
+    gl_Position = vpMatrix * worldPosition;
 }

@@ -24,7 +24,8 @@ void Renderer::Initialize()
 void Renderer::Draw()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(0); //Position
+    glEnableVertexAttribArray(1); //Normal
 
     for (int i = 0; i < this->meshObjects.size(); i++)
     {
@@ -46,12 +47,14 @@ void Renderer::Draw()
         Material* material = this->meshObjects[i]->GetMaterial();
         material->BindShaderProgram();
 
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)12);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
     }
 
     //Unbind uniform buffers?
     glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
 }
 
 void Renderer::AddToQueue(Mesh *mesh)

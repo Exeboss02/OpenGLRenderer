@@ -8,7 +8,7 @@ public:
     Mesh();
     ~Mesh();
 
-    Triangle triangle;
+    Pyramid pyramid;
 
     void BindVertexBuffer();
     void BindIndexBuffer();

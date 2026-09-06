@@ -8,3 +8,11 @@ struct Triangle
 
     Vertex vertexData[3];
 };
+
+struct Pyramid
+{
+    Pyramid();
+    ~Pyramid();
+
+    Vertex vertexData[12];
+};

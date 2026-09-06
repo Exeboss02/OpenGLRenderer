@@ -27,7 +27,7 @@ private:
 template <typename TStartScene>
 void Engine::Run()
 {
-    this->window.Initialize(1000, 600, "OpenGLRenderer");
+    this->window.Initialize(1280, 720, "OpenGLRenderer");
 
     Renderer& rendererInstance = Renderer::GetInstance();
     rendererInstance.Initialize();
